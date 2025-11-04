@@ -82,6 +82,7 @@ namespace RpgApi.Controllers
 
 
         /*=====================Atividade do teams aula 13======================================*/
+        //Felipe e gustavo
         [HttpPost("DisputaEmGrupo")]
         public async Task<IActionResult> DisputaEmGrupoAsync(Disputa d)
         {

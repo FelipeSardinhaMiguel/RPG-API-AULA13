@@ -58,6 +58,7 @@ namespace RpgApi.Controllers
 
         
         /*==================Aula 13=======================*/
+        //Felipe e gustavo
         [HttpPost("Autenticar")]
         public async Task<IActionResult> AutenticarUsuario(Usuario credenciais)
         {

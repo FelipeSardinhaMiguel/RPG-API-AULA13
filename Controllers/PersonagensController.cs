@@ -106,6 +106,7 @@ namespace RpgApi.Controllers
         }
 
         /*=======================Aula 13===============================*/
+        //Felipe e gustavo
         [HttpPut("RestaurarPontosVida")]
         public async Task<IActionResult> RestaurarPontosVidaAsync(Personagem p)
         {
