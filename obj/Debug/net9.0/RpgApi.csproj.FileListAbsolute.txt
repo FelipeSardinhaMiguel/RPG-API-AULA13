@@ -1038,3 +1038,4 @@ C:\Users\felip\OneDrive\Área de Trabalho\Curso\2º Módulo\DS\RPG-API-AULA13\ob
 C:\Users\felip\OneDrive\Área de Trabalho\Curso\2º Módulo\DS\RPG-API-AULA13\obj\Debug\net9.0\RpgApi.pdb
 C:\Users\felip\OneDrive\Área de Trabalho\Curso\2º Módulo\DS\RPG-API-AULA13\obj\Debug\net9.0\RpgApi.genruntimeconfig.cache
 C:\Users\felip\OneDrive\Área de Trabalho\Curso\2º Módulo\DS\RPG-API-AULA13\obj\Debug\net9.0\ref\RpgApi.dll
+C:\Users\felip\OneDrive\Área de Trabalho\Curso\2º Módulo\DS\RPG-API-AULA13\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

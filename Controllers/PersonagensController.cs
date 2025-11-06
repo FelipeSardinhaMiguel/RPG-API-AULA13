@@ -7,9 +7,12 @@ using RpgApi.Data;
 using Microsoft.EntityFrameworkCore;
 using RpgApi.Models;
 using RpgApi.Models.Enuns;
+using Microsoft.AspNetCore.Authorization;
+using RpgApi.Extensions;
 
 namespace RpgApi.Controllers
 {
+    [Authorize(Roles="Jogador, Admin")] //<-- serve para pedir autorização para utilizar essa controller (UsuariosController)
     [ApiController]
     [Route("[controller]")]
     public class PersonagensController : ControllerBase
@@ -61,6 +64,9 @@ namespace RpgApi.Controllers
         {
             try
             {
+
+                novoPersonagem.Usuario = _context.TB_USUARIOS.FirstOrDefault(uBusca => uBusca.Id == User.UsuarioId());
+
                 await _context.TB_PERSONAGENS.AddAsync(novoPersonagem);
                 await _context.SaveChangesAsync();
 
@@ -244,7 +250,49 @@ namespace RpgApi.Controllers
             }
         }
 
-        
+        [HttpGet("GetByUser")]
+        public async Task<IActionResult> GetByUserAsync()
+        {
+            try
+            {
+                int id = User.UsuarioId();
+
+                List<Personagem> lista = await _context.TB_PERSONAGENS.Where(u => u.UsuarioId == id).ToListAsync();
+                return Ok(lista);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message + " - " + ex.InnerException);
+            }
+        }
+
+        [HttpGet("GetByPerfil")]
+        public async Task<IActionResult> GetByPerfilAsync()
+        {
+            try
+            {
+                List<Personagem> lista = new List<Personagem>();
+
+                if (User.UsuarioPerfil() == "Admin")
+                {
+                    lista = await _context.TB_PERSONAGENS.ToListAsync();
+                }
+                else
+                {
+                    lista = await _context.TB_PERSONAGENS.Where(p => p.Usuario.Id == User.UsuarioId()).ToListAsync();
+                }
+                return Ok(lista);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message + " - " + ex.InnerException);
+            }
+        }
+
+
+
+
+
 
     }
 }
